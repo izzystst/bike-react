@@ -32,7 +32,7 @@ export default class EditBikeModal extends Component {
 		console.log(this.state)
 		return(
 			<Segment>
-			<h4>Add a new Bike</h4>
+			<h4>Edit a bike!</h4>
 			<Form onSubmit={this.handleSubmit}>
 				<Label>Bike Type:</Label>
 				<Form.Input
@@ -42,7 +42,7 @@ export default class EditBikeModal extends Component {
 					placeholder="What type of bike is this?"
 					onChange={this.handleChange}
 				/>
-				<Label>Brakes:</Label>
+				<Label>Brakes: (check if true)</Label>
 				<Form.Input
 					type='checkbox'
 					checked={this.state.brakes}

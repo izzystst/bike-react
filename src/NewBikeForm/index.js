@@ -49,7 +49,7 @@ export default class NewBikeForm extends Component {
 					placeholder="What type of bike is this?"
 					onChange={this.handleChange}
 				/>
-				<Label>Brakes:</Label>
+				<Label>Brakes:(check if true)</Label>
 				<Form.Input
 					type='checkbox'
 					checked={this.state.brakes}
