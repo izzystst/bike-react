@@ -72,6 +72,32 @@ export default class BikeContainer extends Component {
 			idOfBikeToEdit: idOfBikeToEdit
 		})
 	}
+
+	updateBike = async(updatedBikeInfo)=>{
+		const url = process.env.REACT_APP_API_URL + '/api/v1/bikes/' + this.state.idOfBikeToEdit
+		try{
+			const updateBikeResponse = await fetch(url,{
+				method:'PUT',
+				body: JSON.stringify(updatedBikeInfo),
+				headers:{
+					"Content-Type": "application/json"
+				}
+			})
+				const updateBikeJson = await updateBikeResponse.json()
+				if(updateBikeResponse.status=== 200){
+					const bikes = this.state.bikes
+					const indexOfBikeBeingUpdated = bikes.findIndex(bike=> bike.id == this.state.idOfBikeToEdit)
+					bikes[indexOfBikeBeingUpdated] = updateBikeJson.data
+					this.setState({
+						bikes:bikes,
+						idOfBikeToEdit: -1
+					})
+				}
+	
+		}catch(err){
+			console.log(err)
+		}
+	}
 	render(){
 		console.log(this.state)
 		return(
@@ -87,6 +113,7 @@ export default class BikeContainer extends Component {
 			 	&&
 			 <EditBikeModal
 			 	bikeToEdit={this.state.bikes.find((dog)=> dog.id===this.state.idOfBikeToEdit)}
+			 	updateBike={this.updateBike}
 			 />
 			 }
 			</React.Fragment>
