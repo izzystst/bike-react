@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import BikeList from "../BikeList"
 export default class BikeContainer extends Component {
 	constructor(props){
 		super(props)
@@ -30,6 +30,7 @@ export default class BikeContainer extends Component {
 		return(
 			<React.Fragment>
 			<h2> BIKES!!!!!</h2>
+			<BikeList bikes={this.state.bikes} />
 			</React.Fragment>
 			)
 	}
