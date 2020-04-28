@@ -24,12 +24,23 @@ export default class NewBikeForm extends Component {
 			brakes: newVal
 		})
 	}
+	handleSubmit=(event)=>{
+		event.preventDefault()
+		this.props.createBike(this.state)
+		this.setState({
+			biketype: '',
+			brakes: true,
+			brand: '',
+			gears: '',
+			model: ''
+		})
+	}
 	render(){
 		console.log(this.state)
 		return(
 			<Segment>
 			<h4>Add a new Bike</h4>
-			<Form>
+			<Form onSubmit={this.handleSubmit}>
 				<Label>Bike Type:</Label>
 				<Form.Input
 					type='text'
@@ -58,7 +69,7 @@ export default class NewBikeForm extends Component {
 				/>
 				<Label>Gears:</Label>
 				<Form.Input
-					type='text'
+					type='number'
 					name="gears"
 					value={this.state.gears}
 					placeholder="Does it have gears?"

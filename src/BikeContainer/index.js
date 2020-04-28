@@ -28,8 +28,20 @@ export default class BikeContainer extends Component {
 	}
 	createBike = async(bikeToAdd)=>{
 		try{
-
-
+			console.log("this is the new bike")
+			console.log(bikeToAdd)
+			const url = process.env.REACT_APP_API_URL + '/api/v1/bikes/'
+			const createBikeResponse = await fetch(url, {'method': 'POST',
+				headers:{ 'Content-Type': 'application/json'},
+				body: JSON.stringify(bikeToAdd)
+			})
+			const createBikeJson = await createBikeResponse.json()
+			console.log("this is after making bike")
+			console.log(createBikeJson)
+			const state=this.state
+			if(createBikeResponse.status === 201){
+				this.setState(state)
+			}
 		}catch(err){
 			console.log(err)
 		}
