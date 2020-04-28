@@ -6,7 +6,24 @@ export default class BikeContainer extends Component {
 		this.state={
 			bikes:[]
 		}
-	}render(){
+	}
+	componentDidMount(){
+		this.getBikes()
+	}
+	getBikes = async()=>{
+		try{
+			const url = process.env.REACT_APP_API_URL + '/api/v1/bikes/'
+			console.log(url)
+			const bikeResponse = await fetch(url)
+			const bikesJson = await bikeResponse.json()
+			console.log(bikesJson)
+
+
+		}catch(err){
+			console.log(err)
+		}
+	}
+	render(){
 		return(
 			<React.Fragment>
 			<h2> BIKES!!!!!</h2>
