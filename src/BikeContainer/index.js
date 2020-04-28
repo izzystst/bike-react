@@ -17,13 +17,16 @@ export default class BikeContainer extends Component {
 			const bikeResponse = await fetch(url)
 			const bikesJson = await bikeResponse.json()
 			console.log(bikesJson)
-
+			this.setState({
+				bikes: bikesJson
+			})
 
 		}catch(err){
 			console.log(err)
 		}
 	}
 	render(){
+		console.log(this.state)
 		return(
 			<React.Fragment>
 			<h2> BIKES!!!!!</h2>
