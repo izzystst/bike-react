@@ -17,6 +17,9 @@ export default function BikeList(props){
 			<Button 
 				basic color='red'
 				onClick={ ()=> props.deleteBike(bike.id, i) }>Delete </Button>
+			<Button 
+			basic color='yellow'
+			onClick={ ()=> props.editBike(bike.id, i) }>Edit </Button>
 			</Card.Content>
 
 			</Card>

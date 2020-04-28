@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import BikeList from "../BikeList"
 import NewBikeForm from '../NewBikeForm'
+import EditBikeModal from '../EditBikeModal'
 export default class BikeContainer extends Component {
 	constructor(props){
 		super(props)
 		this.state={
-			bikes:[]
+			bikes:[],
+			idOfBikeToEdit: -1
 		}
 	}
 	componentDidMount(){
@@ -65,6 +67,11 @@ export default class BikeContainer extends Component {
 			console.log(err)
 		}
 	}
+	editBike=(idOfBikeToEdit)=>{
+		this.setState({
+			idOfBikeToEdit: idOfBikeToEdit
+		})
+	}
 	render(){
 		console.log(this.state)
 		return(
@@ -74,7 +81,14 @@ export default class BikeContainer extends Component {
 			<BikeList 
 				bikes={this.state.bikes}
 				deleteBike={this.deleteBike}
+				editBike={this.editBike}
 			 />
+			 {this.state.idOfBikeToEdit !== -1
+			 	&&
+			 <EditBikeModal
+			 	bikeToEdit={this.state.bikes.find((dog)=> dog.id===this.state.idOfBikeToEdit)}
+			 />
+			 }
 			</React.Fragment>
 			)
 	}
