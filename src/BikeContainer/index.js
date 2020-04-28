@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BikeList from "../BikeList"
+import NewBikeForm from '../NewBikeForm'
 export default class BikeContainer extends Component {
 	constructor(props){
 		super(props)
@@ -25,11 +26,21 @@ export default class BikeContainer extends Component {
 			console.log(err)
 		}
 	}
+	createBike = async(bikeToAdd)=>{
+		try{
+
+
+		}catch(err){
+			console.log(err)
+		}
+
+	}
 	render(){
 		console.log(this.state)
 		return(
 			<React.Fragment>
 			<h2> BIKES!!!!!</h2>
+			<NewBikeForm createBike={this.createBike} />
 			<BikeList bikes={this.state.bikes} />
 			</React.Fragment>
 			)

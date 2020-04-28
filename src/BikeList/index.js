@@ -9,7 +9,9 @@ export default function BikeList(props){
 			<Card.Header>
 				{bike.brand} {bike.model}
 			</Card.Header>
-			
+			<Card.Description>
+			This bike is a {bike.biketype} with {bike.gears} gears.
+			</Card.Description>
 			</Card.Content>
 			</Card>
 
@@ -22,7 +24,5 @@ export default function BikeList(props){
 			{bikes}
 		</Card.Group>
 		</React.Fragment>
-		)
-	
-		
+	)
 }
