@@ -47,13 +47,34 @@ export default class BikeContainer extends Component {
 		}
 
 	}
+	deleteBike = async(idOfBikeToDelete, indexOfBikeToDelete)=>{
+		const bikes=this.state.bikes
+		const url = process.env.REACT_APP_API_URL + '/api/v1/bikes/' + idOfBikeToDelete
+		try{
+			const deleteBikeResponse = await fetch(url, {
+				'method': "DELETE"
+			})
+			const deleteBikeJson = await deleteBikeResponse.json()
+			console.log("this is the bike delete json")
+			console.log(deleteBikeJson)
+			bikes.splice(indexOfBikeToDelete, 1)
+			this.setState({
+				bikes:bikes
+			})
+		}catch(err){
+			console.log(err)
+		}
+	}
 	render(){
 		console.log(this.state)
 		return(
 			<React.Fragment>
 			<h2> BIKES!!!!!</h2>
 			<NewBikeForm createBike={this.createBike} />
-			<BikeList bikes={this.state.bikes} />
+			<BikeList 
+				bikes={this.state.bikes}
+				deleteBike={this.deleteBike}
+			 />
 			</React.Fragment>
 			)
 	}

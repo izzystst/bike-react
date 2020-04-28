@@ -13,6 +13,12 @@ export default function BikeList(props){
 			This bike is a {bike.biketype} with {bike.gears} gears.
 			</Card.Description>
 			</Card.Content>
+			<Card.Content textAlign={"center"}>
+			<Button 
+				basic color='red'
+				onClick={ ()=> props.deleteBike(bike.id, i) }>Delete </Button>
+			</Card.Content>
+
 			</Card>
 
 		)
